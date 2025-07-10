@@ -1,0 +1,70 @@
+local player = game.Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- GUI Creation
+local screenGui = Instance.new("ScreenGui", playerGui)
+screenGui.Name = "Darakz Hub"
+screenGui.ResetOnSpawn = false
+
+-- Main Frame
+local mainFrame = Instance.new("Frame", screenGui)
+mainFrame.Size = UDim2.new(0, 200, 0, 30)
+mainFrame.Position = UDim2.new(0.3, 0, 0.3, 0)
+mainFrame.BackgroundColor3 = Color3.fromRGB(156, 255, 174)
+mainFrame.BorderSizePixel = 0
+mainFrame.Active = true
+mainFrame.Draggable = true
+
+-- Title
+local title = Instance.new("TextLabel", mainFrame)
+title.Size = UDim2.new(1, -30, 1, 0)
+title.Position = UDim2.new(0, 5, 0, 0)
+title.Text = "Darakz Hub v4.6"
+title.TextColor3 = Color3.fromRGB(1, 1, 1)
+title.TextXAlignment = Enum.TextXAlignment.Left
+title.BackgroundTransparency = 1
+
+-- Toggle Button (arrow)
+local toggleButton = Instance.new("TextButton", mainFrame)
+toggleButton.Size = UDim2.new(0, 25, 1, 0)
+toggleButton.Position = UDim2.new(1, -25, 0, 0)
+toggleButton.Text = "▼"
+toggleButton.BackgroundTransparency = 1
+toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+-- Options Frame
+local optionsFrame = Instance.new("Frame", mainFrame)
+optionsFrame.Position = UDim2.new(0, 0, 1, 0)
+optionsFrame.Size = UDim2.new(1, 0, 0, 90)
+optionsFrame.BackgroundColor3 = Color3.fromRGB(0, 255, 21)
+optionsFrame.BorderSizePixel = 0
+optionsFrame.Visible = false
+
+-- Function to create toggleable options
+local function createOption(name, order)
+	local option = Instance.new("TextButton", optionsFrame)
+	option.Size = UDim2.new(1, 0, 0, 30)
+	option.Position = UDim2.new(0, 0, 0, (order - 1) * 30)
+	option.BackgroundTransparency = 1
+	option.TextColor3 = Color3.fromRGB(1, 1, 1)
+	option.TextXAlignment = Enum.TextXAlignment.Left
+	option.Font = Enum.Font.SourceSans
+	option.TextSize = 18
+	option.Text = name .. "  ☐"
+	
+	local isChecked = false
+	option.MouseButton1Click:Connect(function()
+		isChecked = not isChecked
+		option.Text = name .. (isChecked and "  ✓" or "  ☐")
+	end)
+end
+
+createOption("Start Trade Scam", 1)
+createOption("Freeze Trade", 2)
+createOption("Auto Ready Trade", 3)
+
+-- Toggle visibility
+toggleButton.MouseButton1Click:Connect(function()
+	optionsFrame.Visible = not optionsFrame.Visible
+	toggleButton.Text = optionsFrame.Visible and "▲" or "▼"
+end)
